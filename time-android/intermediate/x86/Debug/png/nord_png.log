@@ -1,0 +1,44 @@
+﻿  ANDROID_HOME=C:\\Microsoft\AndroidSDK\25
+  ANT_HOME=C:\Program Files\Microsoft Visual Studio\2022\Community\Apps\apache-ant-1.9.3
+  JAVA_HOME=C:\Program Files\Android\jdk\jdk-8.0.302.8-hotspot\jdk8u302-b08
+  NDK_ROOT=C:\archive\android-ndk-r23b
+  png.c
+png.c(14,10): fatal error : 'png/pngpriv.h' file not found
+  #include <png/pngpriv.h>
+           ^~~~~~~~~~~~~~~
+  1 error generated.
+  pngget.c
+pngget.c(15,10): fatal error : 'png/pngpriv.h' file not found
+  #include <png/pngpriv.h>
+           ^~~~~~~~~~~~~~~
+  1 error generated.
+  pngrio.c
+pngrio.c(21,10): fatal error : 'png/pngpriv.h' file not found
+  #include <png/pngpriv.h>
+           ^~~~~~~~~~~~~~~
+  1 error generated.
+  pngrtran.c
+pngrtran.c(19,10): fatal error : 'png/pngpriv.h' file not found
+  #include <png/pngpriv.h>
+           ^~~~~~~~~~~~~~~
+  1 error generated.
+  pngpread.c
+pngpread.c(14,10): fatal error : 'png/pngpriv.h' file not found
+  #include <png/pngpriv.h>
+           ^~~~~~~~~~~~~~~
+  1 error generated.
+  pngread.c
+pngread.c(17,10): fatal error : 'png/pngpriv.h' file not found
+  #include <png/pngpriv.h>
+           ^~~~~~~~~~~~~~~
+  1 error generated.
+  pngerror.c
+pngerror.c(19,10): fatal error : 'png/pngpriv.h' file not found
+  #include <png/pngpriv.h>
+           ^~~~~~~~~~~~~~~
+  1 error generated.
+  pngmem.c
+pngmem.c(20,10): fatal error : 'png/pngpriv.h' file not found
+  #include <png/pngpriv.h>
+           ^~~~~~~~~~~~~~~
+  1 error generated.

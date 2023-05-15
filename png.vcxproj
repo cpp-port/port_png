@@ -186,6 +186,7 @@
       <ExceptionHandling>Async</ExceptionHandling>
       <EnableModules>false</EnableModules>
       <AdditionalOptions>/d2ssa-cse-  </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -237,6 +238,7 @@
       <EnableModules>false</EnableModules>
       <AdditionalOptions>
       </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -290,6 +292,7 @@
       <ExceptionHandling>Async</ExceptionHandling>
       <EnableModules>false</EnableModules>
       <AdditionalOptions>/d2ssa-cse-  </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -346,6 +349,7 @@
       <EnableModules>false</EnableModules>
       <AdditionalOptions>
       </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -396,6 +400,7 @@
       <EnableModules>false</EnableModules>
       <AdditionalOptions>
       </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -445,6 +450,7 @@
       <EnableModules>false</EnableModules>
       <AdditionalOptions>
       </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -497,6 +503,7 @@
       <EnableModules>false</EnableModules>
       <AdditionalOptions>
       </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -551,6 +558,7 @@
       <EnableModules>false</EnableModules>
       <AdditionalOptions>
       </AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>

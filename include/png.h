@@ -1037,7 +1037,7 @@ PNG_EXPORT(241, int, png_convert_to_rfc1123_buffer, (char out[29],
     png_const_timep ptime));
 #endif
 
-#ifdef PNG_CONVERT_tIME_SUPPORTED
+#ifdef PNG_CONVERT_TIME_SUPPORTED
 /* Convert from a struct tm to png_time */
 PNG_EXPORT(24, void, png_convert_from_struct_tm, (png_timep ptime,
     const struct tm * ttime));

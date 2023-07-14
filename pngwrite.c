@@ -467,7 +467,7 @@ png_write_end(png_structrp png_ptr, png_inforp info_ptr)
 #endif
 }
 
-#ifdef PNG_CONVERT_tIME_SUPPORTED
+#ifdef PNG_CONVERT_TIME_SUPPORTED
 void PNGAPI
 png_convert_from_struct_tm(png_timep ptime, const struct tm * ttime)
 {

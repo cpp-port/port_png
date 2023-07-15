@@ -592,7 +592,7 @@ typedef png_text * * png_textpp;
 #define PNG_TEXT_COMPRESSION_LAST     3  /* Not a valid value */
 
 /* png_time is a way to hold the time in an machine independent way.
- * Two conversions are provided, both from posix_time and struct tm.  There
+ * Two conversions are provided, both from time_t and struct tm.  There
  * is no portable way to convert to either of these structures, as far
  * as I know.  If you know of a portable way, send it to me.  As a side
  * note - PNG has always been Year 2000 compliant!
@@ -1042,8 +1042,8 @@ PNG_EXPORT(241, int, png_convert_to_rfc1123_buffer, (char out[29],
 PNG_EXPORT(24, void, png_convert_from_struct_tm, (png_timep ptime,
     const struct tm * ttime));
 
-/* Convert from posix_time to png_time.  Uses gmtime() */
-PNG_EXPORT(25, void, png_convert_from_time_t, (png_timep ptime, posix_time ttime));
+/* Convert from time_t to png_time.  Uses gmtime() */
+PNG_EXPORT(25, void, png_convert_from_time_t, (png_timep ptime, time_t ttime));
 #endif /* CONVERT_tIME */
 
 #ifdef PNG_READ_EXPAND_SUPPORTED

@@ -597,21 +597,20 @@
     <ClCompile Include="pngwutil.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="png.h" />
-    <ClInclude Include="pngconf.h" />
-    <ClInclude Include="pngdebug.h" />
-    <ClInclude Include="pnginfo.h" />
-    <ClInclude Include="pnglibconf.h" />
-    <ClInclude Include="pngpriv.h" />
-    <ClInclude Include="pngstruct.h" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="png.def" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\base\zlib\zlib.vcxproj">
       <Project>{34fcfbf1-e922-4fdc-bc83-b3c04623e8c2}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\png.h" />
+    <ClInclude Include="include\png\pngdebug.h" />
+    <ClInclude Include="include\png\pnginfo.h" />
+    <ClInclude Include="include\png\pngprefix.h" />
+    <ClInclude Include="include\png\pngpriv.h" />
+    <ClInclude Include="include\png\pngstruct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,6 +9,12 @@
       <UniqueIdentifier>{ce0089ae-5e1e-4a2c-b359-88ef4dec8309}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl</Extensions>
     </Filter>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{369f34d8-9dc7-4f3a-ac25-b20ad8edf380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include\png">
+      <UniqueIdentifier>{e9ee536c-9c5c-490a-8f9d-a6de26b7ea49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="png.c">
@@ -58,31 +64,28 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="png.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pngconf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pngdebug.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pnginfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pnglibconf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pngpriv.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pngstruct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="png.def">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\png.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\png\pngdebug.h">
+      <Filter>Header Files\include\png</Filter>
+    </ClInclude>
+    <ClInclude Include="include\png\pnginfo.h">
+      <Filter>Header Files\include\png</Filter>
+    </ClInclude>
+    <ClInclude Include="include\png\pngprefix.h">
+      <Filter>Header Files\include\png</Filter>
+    </ClInclude>
+    <ClInclude Include="include\png\pngpriv.h">
+      <Filter>Header Files\include\png</Filter>
+    </ClInclude>
+    <ClInclude Include="include\png\pngstruct.h">
+      <Filter>Header Files\include\png</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -2062,7 +2062,7 @@ make_rgb_colormap(png_image_read_control *display)
 {
    unsigned int i, r;
 
-   /* Build a 6x6x6 opaque RGB graphics3d */
+   /* Build a 6x6x6 opaque RGB cube */
    for (i=r=0; r<6; ++r)
    {
       unsigned int g;
@@ -2641,7 +2641,7 @@ png_image_read_colormap(png_voidp argument)
          {
             /* We could use png_quantize here so long as there is no transparent
              * color or alpha; png_quantize ignores alpha.  Easier overall just
-             * to do it once and using PNG_DIV51 on the 6x6x6 reduced RGB graphics3d.
+             * to do it once and using PNG_DIV51 on the 6x6x6 reduced RGB cube.
              * Consequently we always want libpng to produce sRGB data.
              */
             data_encoding = P_sRGB;
@@ -2651,7 +2651,7 @@ png_image_read_colormap(png_voidp argument)
                png_ptr->num_trans > 0)
             {
                /* Is there alpha in the output too?  If so all four channels are
-                * processed into a special RGB graphics3d with alpha support.
+                * processed into a special RGB cube with alpha support.
                 */
                if ((output_format & PNG_FORMAT_FLAG_ALPHA) != 0)
                {

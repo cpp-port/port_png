@@ -411,7 +411,7 @@ png_set_alpha_mode(png_structrp png_ptr, int mode, double output_gamma)
  * allowed, and a histogram if possible.  If the current number
  * of colors is greater than the maximum number, the palette will be
  * modified to fit in the maximum number.  "full_quantize" indicates
- * whether we need a quantizing cube set up for RGB images, or if we
+ * whether we need a quantizing graphics3d set up for RGB images, or if we
  * simply are reducing the number of colors in a paletted image.
  */
 

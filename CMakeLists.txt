@@ -19,14 +19,14 @@ enable_testing()
 set(PNGLIB_MAJOR 1)
 set(PNGLIB_MINOR 6)
 set(PNGLIB_RELEASE 16)
-set(PNGLIB_NAME libpng${PNGLIB_MAJOR}${PNGLIB_MINOR})
+set(PNGLIB_NAME png${PNGLIB_MAJOR}${PNGLIB_MINOR})
 set(PNGLIB_VERSION ${PNGLIB_MAJOR}.${PNGLIB_MINOR}.${PNGLIB_RELEASE})
 
 # needed packages
 #find_package(ZLIB REQUIRED)
 #include_directories(${ZLIB_INCLUDE_DIR})
 
-set(ZLIB_LIBRARY z)
+set(ZLIB_LIBRARY zlib)
 
 #if(NOT WIN32)
 #  find_library(M_LIBRARY
@@ -64,7 +64,7 @@ set(ZLIB_LIBRARY z)
 set(PNG_LIB_NAME png${PNGLIB_MAJOR}${PNGLIB_MINOR})
 
 # to distinguish between debug and release lib
-set(CMAKE_DEBUG_POSTFIX "d")
+#set(CMAKE_DEBUG_POSTFIX "d")
 
 ## Use the prebuilt pnglibconf.h file from the scripts folder
 ## TODO: fix this by building with awk; without this no cmake build can be
@@ -127,11 +127,11 @@ unset(PNG_LIB_TARGETS)
 
 add_library(${PROJECT_NAME} SHARED ${libpng_sources})
 set(PNG_LIB_TARGETS ${PROJECT_NAME})
-if (MSVC)
-    # msvc does not append 'lib' - do it here to have consistent name
-    set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "lib")
-    set_target_properties(${PROJECT_NAME} PROPERTIES IMPORT_PREFIX "lib")
-endif ()
+#if (MSVC)
+#    # msvc does not append 'lib' - do it here to have consistent name
+#    set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "lib")
+#    set_target_properties(${PROJECT_NAME} PROPERTIES IMPORT_PREFIX "lib")
+#endif ()
 target_link_libraries(${PROJECT_NAME} ${ZLIB_LIBRARY} ${M_LIBRARY})
 
 
@@ -141,7 +141,7 @@ add_library(${PNG_LIB_NAME_STATIC} STATIC ${libpng_sources})
 list(APPEND PNG_LIB_TARGETS ${PNG_LIB_NAME_STATIC})
 if (MSVC)
     # msvc does not append 'lib' - do it here to have consistent name
-    set_target_properties(${PNG_LIB_NAME_STATIC} PROPERTIES PREFIX "lib")
+    #set_target_properties(${PNG_LIB_NAME_STATIC} PROPERTIES PREFIX "lib")
 endif ()
 target_link_libraries(${PNG_LIB_NAME_STATIC} ${ZLIB_LIBRARY} ${M_LIBRARY})
 #endif()
@@ -156,6 +156,17 @@ if (PNG_SHARED AND WIN32)
     set_target_properties(${PROJECT_NAME} PROPERTIES DEFINE_SYMBOL PNG_BUILD_DLL)
 endif ()
 
+
+if (MSVC)
+
+    set_target_properties(${PROJECT_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON )
+    target_compile_options(${PROJECT_NAME} PRIVATE "/MD$<$<CONFIG:Debug>:d>")
+    target_link_options(${PROJECT_NAME} PRIVATE "/DEFAULTLIB:msvcrt$<$<CONFIG:Debug>:d>")
+    target_link_options(${PROJECT_NAME} PRIVATE "/IMPLIB:${LIBRARY_OUTPUT_PATH}/${PROJECT_NAME}.lib")
+#    target_link_options(${PROJECT_NAME} PRIVATE "/DEF:${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}.def")
+
+
+endif()
 
 #
 #if(PNG_TESTS AND PNG_SHARED)
@@ -203,11 +214,11 @@ endif ()
 #  )
 #endif()
 
-# Ensure the CMAKE_LIBRARY_OUTPUT_DIRECTORY is set
-IF (NOT CMAKE_LIBRARY_OUTPUT_DIRECTORY)
-    SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "lib")
-ENDIF (NOT CMAKE_LIBRARY_OUTPUT_DIRECTORY)
-
+## Ensure the CMAKE_LIBRARY_OUTPUT_DIRECTORY is set
+#IF (NOT CMAKE_LIBRARY_OUTPUT_DIRECTORY)
+#    SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "lib")
+#ENDIF (NOT CMAKE_LIBRARY_OUTPUT_DIRECTORY)
+#
 
 #
 ## Set a variable with CMake code which:
@@ -257,34 +268,34 @@ ENDIF (NOT CMAKE_LIBRARY_OUTPUT_DIRECTORY)
 #  CREATE_SYMLINK(${PNGLIB_NAME}-config libpng-config)
 #endif(NOT WIN32 OR CYGWIN OR MINGW)
 
-# SET UP LINKS
-if (PNG_SHARED)
-    set_target_properties(${PNG_LIB_NAME} PROPERTIES
-            #   VERSION 16.${PNGLIB_RELEASE}.1.6.16
-            VERSION 16.${PNGLIB_RELEASE}.0
-            SOVERSION 16
-            CLEAN_DIRECT_OUTPUT 1)
-endif ()
-if (PNG_STATIC)
-    # MSVC doesn't use a different file extension for shared vs. static
-    # libs.  We are able to change OUTPUT_NAME to remove the _static
-    # for all other platforms.
-    if (NOT MSVC)
-        set_target_properties(${PNG_LIB_NAME_STATIC} PROPERTIES
-                OUTPUT_NAME ${PNG_LIB_NAME}
-                CLEAN_DIRECT_OUTPUT 1)
-    endif ()
-endif ()
+## SET UP LINKS
+#if (PNG_SHARED)
+#    set_target_properties(${PNG_LIB_NAME} PROPERTIES
+#            #   VERSION 16.${PNGLIB_RELEASE}.1.6.16
+#            VERSION 16.${PNGLIB_RELEASE}.0
+#            SOVERSION 16
+#            CLEAN_DIRECT_OUTPUT 1)
+#endif ()
+#if (PNG_STATIC)
+#    # MSVC doesn't use a different file extension for shared vs. static
+#    # libs.  We are able to change OUTPUT_NAME to remove the _static
+#    # for all other platforms.
+#    if (NOT MSVC)
+#        set_target_properties(${PNG_LIB_NAME_STATIC} PROPERTIES
+#                OUTPUT_NAME ${PNG_LIB_NAME}
+#                CLEAN_DIRECT_OUTPUT 1)
+#    endif ()
+#endif ()
 
-# If CMake > 2.4.x, we set a variable used below to export
-# targets to an export file.
-# TODO: Use VERSION_GREATER after our cmake_minimum_required >= 2.6.2
-if (CMAKE_MAJOR_VERSION GREATER 1 AND CMAKE_MINOR_VERSION GREATER 4)
-    set(PNG_EXPORT_RULE EXPORT libpng)
-elseif (CMAKE_MAJOR_VERSION GREATER 2) # future proof
-    set(PNG_EXPORT_RULE EXPORT libpng)
-endif ()
-#
+## If CMake > 2.4.x, we set a variable used below to export
+## targets to an export file.
+## TODO: Use VERSION_GREATER after our cmake_minimum_required >= 2.6.2
+#if (CMAKE_MAJOR_VERSION GREATER 1 AND CMAKE_MINOR_VERSION GREATER 4)
+#    set(PNG_EXPORT_RULE EXPORT png)
+#elseif (CMAKE_MAJOR_VERSION GREATER 2) # future proof
+#    set(PNG_EXPORT_RULE EXPORT png)
+#endif ()
+##
 ## INSTALL
 #if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL )
 #  install(TARGETS ${PNG_LIB_TARGETS}
@@ -369,4 +380,7 @@ endif ()
 # to create msvc import lib for mingw compiled shared lib
 # pexports libpng.dll > libpng.def
 # lib /def:libpng.def /machine:x86
+
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../../operating_system/operating_system-${OPERATING_SYSTEM_LOWERED_NAME}/configuration/${PROJECT_NAME})
 

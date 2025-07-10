@@ -117,6 +117,17 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${ZLIB_INCLUDE_DIR})
 
 unset(PNG_LIB_TARGETS)
 
+
+if(CMAKE_ANDROID_ARCH_ABI STREQUAL "arm64-v8a")
+    message(STATUS "Building with NEON assembly for arm64-v8a")
+    list(APPEND libpng_sources
+            arm/arm_init.c
+            arm/filter_neon.S
+            arm/palette_neon_intrinsics.c
+            )
+endif()
+
+
 add_library(${PROJECT_NAME} SHARED ${libpng_sources})
 set(PNG_LIB_TARGETS ${PROJECT_NAME})
 #if (MSVC)
@@ -125,6 +136,7 @@ set(PNG_LIB_TARGETS ${PROJECT_NAME})
 #    set_target_properties(${PROJECT_NAME} PROPERTIES IMPORT_PREFIX "lib")
 #endif ()
 target_link_libraries(${PROJECT_NAME} ${ZLIB_LIBRARY} ${M_LIBRARY})
+
 
 
 # does not work without changing name

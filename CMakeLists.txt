@@ -123,6 +123,7 @@ if(CMAKE_ANDROID_ARCH_ABI STREQUAL "arm64-v8a")
     list(APPEND libpng_sources
             arm/arm_init.c
             arm/filter_neon.S
+            arm/filter_neon_intrinsics.c
             arm/palette_neon_intrinsics.c
             )
 endif()

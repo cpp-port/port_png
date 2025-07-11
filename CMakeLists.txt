@@ -141,7 +141,7 @@ target_link_libraries(${PROJECT_NAME} ${ZLIB_LIBRARY} ${M_LIBRARY})
 
 
 # does not work without changing name
-set(PNG_LIB_NAME_STATIC ${PROJECT_NAME}_static)
+set(PNG_LIB_NAME_STATIC static_${PROJECT_NAME})
 add_library(${PNG_LIB_NAME_STATIC} STATIC ${libpng_sources})
 list(APPEND PNG_LIB_TARGETS ${PNG_LIB_NAME_STATIC})
 if (MSVC)
@@ -386,6 +386,10 @@ endif()
 # pexports libpng.dll > libpng.def
 # lib /def:libpng.def /machine:x86
 
+list(APPEND library_include_directories ${CMAKE_CURRENT_SOURCE_DIR})
+list(APPEND library_include_directories ${CMAKE_CURRENT_SOURCE_DIR}/../../../operating_system/operating_system-${OPERATING_SYSTEM_LOWERED_NAME}/configuration/${PROJECT_NAME})
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../../operating_system/operating_system-${OPERATING_SYSTEM_LOWERED_NAME}/configuration/${PROJECT_NAME})
+target_include_directories(${PROJECT_NAME} PRIVATE ${library_include_directories})
+target_include_directories(static_${PROJECT_NAME} PRIVATE ${library_include_directories})
+
 

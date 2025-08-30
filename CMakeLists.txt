@@ -129,6 +129,17 @@ if(CMAKE_ANDROID_ARCH_ABI STREQUAL "arm64-v8a")
 endif()
 
 
+if(CMAKE_ANDROID_ARCH_ABI STREQUAL "armeabi-v7a")
+    message(STATUS "Building with NEON assembly for armeabi-v7a")
+    list(APPEND libpng_sources
+       arm/arm_init.c
+       arm/filter_neon.S
+       arm/filter_neon_intrinsics.c
+       arm/palette_neon_intrinsics.c
+    )
+endif()
+
+
 add_library(${PROJECT_NAME} SHARED ${libpng_sources})
 set(PNG_LIB_TARGETS ${PROJECT_NAME})
 #if (MSVC)

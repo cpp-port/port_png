@@ -10,7 +10,7 @@
  * and license in png.h
  */
 
-#include <png/pngpriv.h>
+#include <port_png/pngpriv.h>
 
 #if PNG_ARM_NEON_IMPLEMENTATION == 1
 

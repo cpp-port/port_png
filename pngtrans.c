@@ -11,7 +11,7 @@
  * and license in png.h
  */
 
-#include <png/pngpriv.h>
+#include <port_png/pngpriv.h>
 
 #if defined(PNG_READ_SUPPORTED) || defined(PNG_WRITE_SUPPORTED)
 

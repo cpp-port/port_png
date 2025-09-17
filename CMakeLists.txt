@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(png C)
+project(port_png C)
 
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
@@ -18,7 +18,13 @@ set(PNGLIB_VERSION ${PNGLIB_MAJOR}.${PNGLIB_MINOR}.${PNGLIB_RELEASE})
 #find_package(ZLIB REQUIRED)
 #include_directories(${ZLIB_INCLUDE_DIR})
 
-set(ZLIB_LIBRARY zlib)
+if(${LINUX})
+    set(ZLIB_LIBRARY z)
+else()
+    set(ZLIB_LIBRARY zlib)
+endif()
+
+
 
 #if(NOT WIN32)
 #  find_library(M_LIBRARY
@@ -73,10 +79,10 @@ set(PNG_LIB_NAME png${PNGLIB_MAJOR}${PNGLIB_MINOR})
 #  ${CMAKE_CURRENT_BINARY_DIR}/pnglibconf.h
 #)
 list(APPEND libpng_sources
-        include/png/pngdebug.h
-        include/png/pnginfo.h
-        include/png/pngpriv.h
-        include/png/pngstruct.h
+        include/port_png/pngdebug.h
+        include/port_png/pnginfo.h
+        include/port_png/pngpriv.h
+        include/port_png/pngstruct.h
         png.c
         pngerror.c
         pngget.c
@@ -398,6 +404,7 @@ endif()
 # lib /def:libpng.def /machine:x86
 
 list(APPEND library_include_directories ${CMAKE_CURRENT_SOURCE_DIR})
+list(APPEND library_include_directories ${CMAKE_CURRENT_SOURCE_DIR}/include)
 list(APPEND library_include_directories ${CMAKE_CURRENT_SOURCE_DIR}/../../../operating_system/operating_system-${OPERATING_SYSTEM_LOWERED_NAME}/configuration/${PROJECT_NAME})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${library_include_directories})

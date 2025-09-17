@@ -18,7 +18,7 @@
  * them at run time with png_set_write_fn(...).
  */
 
-#include <png/pngpriv.h>
+#include <port_png/pngpriv.h>
 
 #ifdef PNG_WRITE_SUPPORTED
 

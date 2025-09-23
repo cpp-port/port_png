@@ -64,7 +64,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="png.def">
+    <None Include="port_png.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

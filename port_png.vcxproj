@@ -43,9 +43,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>png</ProjectName>
+    <ProjectName>port_png</ProjectName>
     <ProjectGuid>{7DB10B50-CE00-4D7A-B322-6824F05D2FCB}</ProjectGuid>
-    <RootNamespace>png</RootNamespace>
+    <RootNamespace>port_png</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -739,7 +739,7 @@
     <ClCompile Include="pngwutil.c" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="png.def" />
+    <None Include="port_png.def" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\base\zlib\zlib.vcxproj">

@@ -18,7 +18,7 @@ set(PNGLIB_VERSION ${PNGLIB_MAJOR}.${PNGLIB_MINOR}.${PNGLIB_RELEASE})
 #find_package(ZLIB REQUIRED)
 #include_directories(${ZLIB_INCLUDE_DIR})
 
-if(${LINUX})
+if(${LINUX} OR ${OPENBSD})
     set(ZLIB_LIBRARY z)
 else()
     set(ZLIB_LIBRARY zlib)

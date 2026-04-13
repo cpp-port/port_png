@@ -1,3 +1,3 @@
-LIBRARY      "png"
+LIBRARY      "port_png"
 
 EXPORTS

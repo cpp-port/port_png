@@ -119,16 +119,15 @@ if (PNG_DEBUG)
 endif ()
 
 # NOW BUILD OUR TARGET
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${ZLIB_INCLUDE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/include/port_png ${ZLIB_INCLUDE_DIR})
 
 unset(PNG_LIB_TARGETS)
 
 
 if(CMAKE_ANDROID_ARCH_ABI STREQUAL "arm64-v8a")
-    message(STATUS "Building with NEON assembly for arm64-v8a")
+    message(STATUS "Building with NEON intrinsics for arm64-v8a")
     list(APPEND libpng_sources
             arm/arm_init.c
-            arm/filter_neon.S
             arm/filter_neon_intrinsics.c
             arm/palette_neon_intrinsics.c
             )

@@ -1,6 +1,22 @@
 cmake_minimum_required(VERSION 3.16)
 project(port_png C)
 
+if(__REACTOS__)
+    get_target_property(port_zlib_binary zlib BINARY_DIR)
+    get_target_property(port_zlib_source zlib SOURCE_DIR)
+    file(GLOB png_sources CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/png*.c")
+    add_library(png SHARED ${png_sources})
+    target_include_directories(png PRIVATE
+        "${port_zlib_binary}" "${port_zlib_source}/include"
+        "${CMAKE_CURRENT_SOURCE_DIR}/include" "${CMAKE_CURRENT_SOURCE_DIR}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/include/port_png"
+        "${WORKSPACE_FOLDER}/operating_system/operating_system-windows/configuration/port_png"
+        "${WORKSPACE_FOLDER}/operating_system/operating_system-windows/configuration")
+    target_compile_definitions(png PRIVATE PNG_BUILD_DLL)
+    target_link_libraries(png PRIVATE zlib)
+    return()
+endif()
+
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
